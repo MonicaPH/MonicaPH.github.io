@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sentiment analysis</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Sentiment analysis">
+  <meta name="author" content="MonicaPH">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Sentiment analysis</h1>
+    <h2>Course Project</h2>
+    <p>MonicaPH<br/>Developing Data Products</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Sentiment Analysis</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This small project intends to identify the sentiment in the opinion of a person about a cetain epidemic disease.</p>
+
+<p>Five epidemic diseases were presented to trigger an opinion:</p>
+
+<ul>
+<li>Ebola</li>
+<li>VIH</li>
+<li>Cholera</li>
+<li>Influenza</li>
+<li>Dengue</li>
+<li>Cancer</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Sentiment identification</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The type of sentiment of the opinion and its polarity (positive or negative) was determined using the Sentiment Package by Timothy Jurka. </p>
+
+<p>A naive Bayes classifier trained on Carlo Strapparava and Alessandro Valitutti&#39;s emotions lexicon was used to determine the emotion in the text. Six types of emotion are possible: anger, disgust, fear, joy, sadness, and surprise.</p>
+
+<p>Furthermore, a naive Bayes algorithm trained on Janyce Wiebe&#39;s subjectivity lexicon was used to determine the polarity of the sentiment in the text.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For example: <strong><em>&quot;I think Ebola is a horrid disease&quot;</em></strong> is analyzed with the following code:</p>
+
+<pre><code class="r">#classify Emotion
+class_emo = classify_emotion(&quot;I think Ebola is a horrid disease&quot;, algorithm=&quot;bayes&quot;, prior=1.0)
+# get emotion best fit
+emotion = class_emo[,7]
+emotion
+</code></pre>
+
+<pre><code>## BEST_FIT 
+##   &quot;fear&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"># classify polarity
+class_pol = classify_polarity(&quot;I think Ebola is a horrid disease&quot;, algorithm=&quot;bayes&quot;)
+# get polarity best fit
+polarity = class_pol[,4]
+polarity
+</code></pre>
+
+<pre><code>##   BEST_FIT 
+## &quot;negative&quot;
+</code></pre>
+
+<p>In this case, the classifier correctly determines that I feel fear from my statement, and that the sentiment is negative.</p>
+
+<p>In future versions, I plan to improve the App to get the opinions from a Twitter Feed.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Sentiment Analysis'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Sentiment identification'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Example'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
